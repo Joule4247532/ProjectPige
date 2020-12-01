@@ -116,6 +116,7 @@ int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  */
 int ModifierNomItem(item_t* listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
+  // Ici
 
   return iCodeErreur;
 }
