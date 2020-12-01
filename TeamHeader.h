@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-typedef struct item_t {
+/*
+ * Définition du type item_t
+ */
+typedef struct {
   short iID;
   char* sNom;
   char* sDescription;
