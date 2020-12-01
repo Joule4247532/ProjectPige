@@ -229,6 +229,7 @@ int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* 
  */
 int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
   int iCodeErreur = 0;
+  // Ici
 
   return iCodeErreur;
 }
