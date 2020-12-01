@@ -88,6 +88,7 @@ int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  */
 int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iRetrait){
   int iCodeErreur = 0;
+  // Ici
 
   return iCodeErreur;
 }
