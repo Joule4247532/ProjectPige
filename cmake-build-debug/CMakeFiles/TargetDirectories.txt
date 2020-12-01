@@ -1,0 +1,3 @@
+D:/ClionProjects/ProjectPige/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/ClionProjects/ProjectPige/cmake-build-debug/CMakeFiles/ProjectPige.dir
+D:/ClionProjects/ProjectPige/cmake-build-debug/CMakeFiles/edit_cache.dir
