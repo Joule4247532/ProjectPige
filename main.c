@@ -32,6 +32,7 @@ int main() {
  */
 int AjouterItem(item_t* listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
   int iCodeErreur = 0;
+  // Ici
 
   return iCodeErreur;
 }
