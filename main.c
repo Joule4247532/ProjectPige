@@ -60,6 +60,7 @@ int AjouterItem(item_t* listeItems, short* piNbItems, char* sNom, char* sDescrip
  */
 int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iAjout){
   int iCodeErreur = 0;
+  // Ici
 
   return iCodeErreur;
 }
