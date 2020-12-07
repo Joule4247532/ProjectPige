@@ -189,6 +189,7 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  */
 int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
+  // Ici
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
