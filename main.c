@@ -1,13 +1,14 @@
 #include "TeamHeader.h"
 
 int main() {
+  int iCodeErreur = 0;
   item_t** items = NULL;
   short iNbItems = 0;
   char* sNom = "Resistance 4k7";
   char* sDescription = "Juste de resistances 1/4 Watt";
 
-
-  return 0;
+  
+  return iCodeErreur;
 }
 
 /*
@@ -95,8 +96,24 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
  */
-int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iAjout){
+int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iAjout){
   int iCodeErreur = 0;
+
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Si la quantité est positive
+    if (iAjout >= 0) {
+      // Ajouter l'ajout à la quantité
+      (*listeItems)[iItemID]->iQuantite += iAjout;
+    } else {
+      // Si l'ajout est négatif le rendre positif et appeler la fonction pour retirer la quantité ;)
+      iAjout = -iAjout;
+      iCodeErreur = RetirerQuantiteItem(listeItems, piNbItems, iItemID, iAjout);
+    }
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
 
   return iCodeErreur;
 }
@@ -123,7 +140,7 @@ int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iRetrait){
+int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iRetrait){
   int iCodeErreur = 0;
 
   return iCodeErreur;
@@ -151,7 +168,7 @@ int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int ModifierNomItem(item_t* listeItems, short piNbItems, short iItemID, char* sNouveauNom){
+int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
 
   return iCodeErreur;
@@ -179,7 +196,7 @@ int ModifierNomItem(item_t* listeItems, short piNbItems, short iItemID, char* sN
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int ModifierDescriptionItem(item_t* listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
+int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
   int iCodeErreur = 0;
 
   return iCodeErreur;
