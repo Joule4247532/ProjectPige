@@ -1,10 +1,14 @@
 #include "TeamHeader.h"
 
 int main() {
-  item_t* items;
-  short iNbItems;
+  int iCodeErreur = 0;
+  item_t** items = NULL;
+  short iNbItems = 0;
+  char* sNom = "Resistance 4k7";
+  char* sDescription = "Juste de resistances 1/4 Watt";
+
   
-  return 0;
+  return iCodeErreur;
 }
 
 /*
@@ -30,10 +34,44 @@ int main() {
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
  */
-int AjouterItem(item_t* listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
+int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
   int iCodeErreur = 0;
 
-  return iCodeErreur;
+  // Allocation de l'espace d'un item
+  item_t *p = malloc(sizeof(*p));
+  if (p) {
+    // Assignation des élems de l'item
+
+    // ID
+    p->iID = *piNbItems;
+
+    // Nom
+    p->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNom) + 1)), sNom);
+
+    // Description
+    p->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sDescription) + 1)), sDescription);
+
+    // Quantité
+    p->iQuantite = iQuantite;
+
+    // Allocation de la mémoire nécécaire à la liste temporairement
+    item_t **tempList = realloc(*listeItems, (*piNbItems + 1) * sizeof(*tempList));
+    if (tempList){
+      // Mettre les pointeurs dans leurs cases mémoires
+      *listeItems = tempList;
+      (*listeItems)[*piNbItems] = p;
+      // Incrémentation du nombre d'item dans la liste
+      *piNbItems += 1;
+    } else {
+      // Si le realloc n'a pas pu alloquer la mémoire
+      iCodeErreur = -1;
+    }
+  } else {
+    // Si le malloc de l'item dans p n'a pas réussi
+    iCodeErreur = -1;
+  }
+
+  return iCodeErreur; // Retourner le code d'erreur s'il y a lieu
 }
 
 /*
@@ -58,9 +96,24 @@ int AjouterItem(item_t* listeItems, short* piNbItems, char* sNom, char* sDescrip
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
  */
-int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iAjout){
+int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iAjout){
   int iCodeErreur = 0;
-  // Ici
+
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Si la quantité est positive
+    if (iAjout >= 0) {
+      // Ajouter l'ajout à la quantité
+      (*listeItems)[iItemID]->iQuantite += iAjout;
+    } else {
+      // Si l'ajout est négatif le rendre positif et appeler la fonction pour retirer la quantité ;)
+      iAjout = -iAjout;
+      iCodeErreur = RetirerQuantiteItem(listeItems, piNbItems, iItemID, iAjout);
+    }
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
 
   return iCodeErreur;
 }
@@ -87,7 +140,7 @@ int AjouterQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, short iRetrait){
+int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iRetrait){
   int iCodeErreur = 0;
 
   return iCodeErreur;
@@ -115,7 +168,7 @@ int RetirerQuantiteItem(item_t* listeItems, short piNbItems, short iItemID, shor
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int ModifierNomItem(item_t* listeItems, short piNbItems, short iItemID, char* sNouveauNom){
+int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
 
   return iCodeErreur;
@@ -143,7 +196,7 @@ int ModifierNomItem(item_t* listeItems, short piNbItems, short iItemID, char* sN
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
  */
-int ModifierDescriptionItem(item_t* listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
+int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
   int iCodeErreur = 0;
 
   return iCodeErreur;
