@@ -4,9 +4,6 @@ int main() {
   int iCodeErreur = 0;
   item_t** items = NULL;
   short iNbItems = 0;
-  char* sNom = "Resistance 4k7";
-  char* sDescription = "Juste de resistances 1/4 Watt";
-
   
   return iCodeErreur;
 }
@@ -33,6 +30,7 @@ int main() {
  *
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
   int iCodeErreur = 0;
@@ -189,7 +187,6 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  */
 int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
-  // Ici
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
@@ -226,9 +223,22 @@ int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* 
  *
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
   int iCodeErreur = 0;
+
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Liberer la mémoire occupé par l'ancienne description
+    free((*listeItems)[iItemID]->sDescription);
+    // Alloquer l'espace mémoire de la nouvelle description et mettre son addresse dans l'item
+    (*listeItems)[iItemID]->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sNouvelleDescription) + 1)),
+                                          sNouvelleDescription);
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
 
   return iCodeErreur;
 }
