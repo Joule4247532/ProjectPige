@@ -1,9 +1,12 @@
 #include "TeamHeader.h"
 
 int main() {
-  item_t* items;
-  short iNbItems;
-  
+  item_t** items = NULL;
+  short iNbItems = 0;
+  char* sNom = "Resistance 4k7";
+  char* sDescription = "Juste de resistances 1/4 Watt";
+
+
   return 0;
 }
 
@@ -30,11 +33,44 @@ int main() {
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
  */
-int AjouterItem(item_t* listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
+int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
   int iCodeErreur = 0;
-  // Ici
 
-  return iCodeErreur;
+  // Allocation de l'espace d'un item
+  item_t *p = malloc(sizeof(*p));
+  if (p) {
+    // Assignation des élems de l'item
+
+    // ID
+    p->iID = *piNbItems;
+
+    // Nom
+    p->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNom) + 1)), sNom);
+
+    // Description
+    p->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sDescription) + 1)), sDescription);
+
+    // Quantité
+    p->iQuantite = iQuantite;
+
+    // Allocation de la mémoire nécécaire à la liste temporairement
+    item_t **tempList = realloc(*listeItems, (*piNbItems + 1) * sizeof(*tempList));
+    if (tempList){
+      // Mettre les pointeurs dans leurs cases mémoires
+      *listeItems = tempList;
+      (*listeItems)[*piNbItems] = p;
+      // Incrémentation du nombre d'item dans la liste
+      *piNbItems += 1;
+    } else {
+      // Si le realloc n'a pas pu alloquer la mémoire
+      iCodeErreur = -1;
+    }
+  } else {
+    // Si le malloc de l'item dans p n'a pas réussi
+    iCodeErreur = -1;
+  }
+
+  return iCodeErreur; // Retourner le code d'erreur s'il y a lieu
 }
 
 /*
