@@ -95,6 +95,7 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
  *
  * Historique :
  *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iAjout){
   int iCodeErreur = 0;
@@ -139,10 +140,26 @@ int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  *
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iRetrait){
   int iCodeErreur = 0;
-  // Ici
+
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Si la quantité est positive
+    if (iRetrait >= 0) {
+      // Retirer le retrait à la quantité
+      (*listeItems)[iItemID]->iQuantite -= iRetrait;
+    } else {
+      // Si le retrait est négatif le rendre positif et appeler la fonction pour ajouter la quantité ;)
+      iRetrait = -iRetrait;
+      iCodeErreur = AjouterQuantiteItem(listeItems, piNbItems, iItemID, iRetrait);
+    }
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
 
   return iCodeErreur;
 }
