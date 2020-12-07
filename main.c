@@ -116,7 +116,7 @@ int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
     iCodeErreur = -1;
   }
 
-  return iCodeErreur;
+  return iCodeErreur; // Retourner le code d'erreur s'il y a lieu
 }
 
 /*
@@ -161,7 +161,7 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
     iCodeErreur = -1;
   }
 
-  return iCodeErreur;
+  return iCodeErreur; // Retourner le code d'erreur s'il y a lieu
 }
 
 /*
@@ -185,11 +185,23 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  *
  * Historique :
  *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
   int iCodeErreur = 0;
 
-  return iCodeErreur;
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Liberer la mémoire occupé par l'ancien nom
+    free((*listeItems)[iItemID]->sNom);
+    // Alloquer l'espace mémoire du nouveau nom et mettre son addresse dans l'item
+    (*listeItems)[iItemID]->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNouveauNom) + 1)), sNouveauNom);
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
+
+  return iCodeErreur; // Retourner le code d'erreur s'il y a lieu
 }
 
 /*
