@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj"
+  "CMakeFiles/ProjectPige.dir/Menu.c.obj"
+  "CMakeFiles/ProjectPige.dir/Recherche_ID.c.obj"
+  "CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj"
   "CMakeFiles/ProjectPige.dir/main.c.obj"
   "ProjectPige.exe"
   "ProjectPige.exe.manifest"
