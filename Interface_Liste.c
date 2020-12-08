@@ -34,7 +34,7 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
     // Assignation des élems de l'item
 
     // ID
-    p->iID = *piNbItems;
+    p->iID = *piNbItems +1;
 
     // Nom
     p->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNom) + 1)), sNom);
