@@ -1,3 +1,6 @@
+#include "Main.h"
+#include "Interface_Liste.h"
+
 /*
  * Nom de la fonction :
  *    AjouterItem
