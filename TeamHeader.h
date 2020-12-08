@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define NETTOYAGE "\t\n\r;"
+
 /*
  * Définition du type item_t
  */
