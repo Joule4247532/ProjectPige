@@ -89,19 +89,64 @@ CMakeFiles/ProjectPige.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectPige.dir/main.c.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\ClionProjects\ProjectPige\main.c -o CMakeFiles\ProjectPige.dir\main.c.s
 
+CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj: CMakeFiles/ProjectPige.dir/flags.make
+CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj: ../Interface_Liste.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\ClionProjects\ProjectPige\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ProjectPige.dir\Interface_Liste.c.obj   -c D:\ClionProjects\ProjectPige\Interface_Liste.c
+
+CMakeFiles/ProjectPige.dir/Interface_Liste.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjectPige.dir/Interface_Liste.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\ClionProjects\ProjectPige\Interface_Liste.c > CMakeFiles\ProjectPige.dir\Interface_Liste.c.i
+
+CMakeFiles/ProjectPige.dir/Interface_Liste.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectPige.dir/Interface_Liste.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\ClionProjects\ProjectPige\Interface_Liste.c -o CMakeFiles\ProjectPige.dir\Interface_Liste.c.s
+
+CMakeFiles/ProjectPige.dir/Menu.c.obj: CMakeFiles/ProjectPige.dir/flags.make
+CMakeFiles/ProjectPige.dir/Menu.c.obj: ../Menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\ClionProjects\ProjectPige\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ProjectPige.dir/Menu.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ProjectPige.dir\Menu.c.obj   -c D:\ClionProjects\ProjectPige\Menu.c
+
+CMakeFiles/ProjectPige.dir/Menu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjectPige.dir/Menu.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\ClionProjects\ProjectPige\Menu.c > CMakeFiles\ProjectPige.dir\Menu.c.i
+
+CMakeFiles/ProjectPige.dir/Menu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectPige.dir/Menu.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\ClionProjects\ProjectPige\Menu.c -o CMakeFiles\ProjectPige.dir\Menu.c.s
+
+CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj: CMakeFiles/ProjectPige.dir/flags.make
+CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj: ../Sauvegarde.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\ClionProjects\ProjectPige\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ProjectPige.dir\Sauvegarde.c.obj   -c D:\ClionProjects\ProjectPige\Sauvegarde.c
+
+CMakeFiles/ProjectPige.dir/Sauvegarde.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjectPige.dir/Sauvegarde.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\ClionProjects\ProjectPige\Sauvegarde.c > CMakeFiles\ProjectPige.dir\Sauvegarde.c.i
+
+CMakeFiles/ProjectPige.dir/Sauvegarde.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectPige.dir/Sauvegarde.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\ClionProjects\ProjectPige\Sauvegarde.c -o CMakeFiles\ProjectPige.dir\Sauvegarde.c.s
+
 # Object files for target ProjectPige
 ProjectPige_OBJECTS = \
-"CMakeFiles/ProjectPige.dir/main.c.obj"
+"CMakeFiles/ProjectPige.dir/main.c.obj" \
+"CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj" \
+"CMakeFiles/ProjectPige.dir/Menu.c.obj" \
+"CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj"
 
 # External object files for target ProjectPige
 ProjectPige_EXTERNAL_OBJECTS =
 
 ProjectPige.exe: CMakeFiles/ProjectPige.dir/main.c.obj
+ProjectPige.exe: CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj
+ProjectPige.exe: CMakeFiles/ProjectPige.dir/Menu.c.obj
+ProjectPige.exe: CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj
 ProjectPige.exe: CMakeFiles/ProjectPige.dir/build.make
 ProjectPige.exe: CMakeFiles/ProjectPige.dir/linklibs.rsp
 ProjectPige.exe: CMakeFiles/ProjectPige.dir/objects1.rsp
 ProjectPige.exe: CMakeFiles/ProjectPige.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\ClionProjects\ProjectPige\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ProjectPige.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\ClionProjects\ProjectPige\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ProjectPige.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ProjectPige.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
