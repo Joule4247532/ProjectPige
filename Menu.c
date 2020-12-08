@@ -10,12 +10,12 @@
  * Description de la fonction :
  *    Afficher le menu principal
  *
- * Paramètre(s) d'entrée :
+ * Paramï¿½tre(s) d'entrï¿½e :
  *   1 : Pointeur vers listeItems
- *   2 : Pointeur d'entier précisant le nombre d'items contenue dans la liste
- *   3 : Chaine de charactères contenant le nom de l'item
- *   4 : Chaine de charactères contenant la description du l'item
- *   5 : Entier contenant la quantité disponible de l'item
+ *   2 : Pointeur d'entier prï¿½cisant le nombre d'items contenue dans la liste
+ *   3 : Chaine de charactï¿½res contenant le nom de l'item
+ *   4 : Chaine de charactï¿½res contenant la description du l'item
+ *   5 : Entier contenant la quantitï¿½ disponible de l'item
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -24,7 +24,7 @@
  * Note(s) :
  *
  * Historique :
- *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-01 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 
@@ -34,10 +34,10 @@ int AfficherMenu() {
         printf("=====Menu principal=====\n\n");
         printf("Charger la base de donnees: Appuyer sur 1.\n\n");
         printf("Effectuer un retrait: Appuyex sur 2.\n\n");
-        printf("Afficher les donnees chargées: Appuyer sur 3\n\n");
-        printf("Créer un nouvel item: Appuyex sur 4\n\n");
+        printf("Afficher les donnees chargï¿½es: Appuyer sur 3\n\n");
+        printf("Crï¿½er un nouvel item: Appuyex sur 4\n\n");
         printf("Ajouter une quantite d'un item: Appuyex sur 5.\n\n");
-        printf("Modifier les détails d'un item: Appuyex sur 6.\n\n");
+        printf("Modifier les dï¿½tails d'un item: Appuyex sur 6.\n\n");
         printf("Votre choix?\n");
         scanf("%d", &choix);
     }
