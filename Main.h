@@ -3,7 +3,7 @@
 #include <string.h>
 
 /*
- * Définition du type item_t
+ * Dï¿½finition du type item_t
  */
 typedef struct {
   short iID;

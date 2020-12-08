@@ -1,2 +1,2 @@
 
-int menu();
+int AfficherMenu();

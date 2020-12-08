@@ -6,14 +6,14 @@
  *    AjouterItem
  *
  * Description de la fonction :
- *    Ajoute un Item à listeItems avec allocation de memoire dynamique
+ *    Ajoute un Item ï¿½ listeItems avec allocation de memoire dynamique
  *
- * Paramètre(s) d'entrée :
+ * Paramï¿½tre(s) d'entrï¿½e :
  *   1 : Pointeur vers listeItems
- *   2 : Pointeur d'entier précisant le nombre d'items contenue dans la liste
- *   3 : Chaine de charactères contenant le nom de l'item
- *   4 : Chaine de charactères contenant la description du l'item
- *   5 : Entier contenant la quantité disponible de l'item
+ *   2 : Pointeur d'entier prï¿½cisant le nombre d'items contenue dans la liste
+ *   3 : Chaine de charactï¿½res contenant le nom de l'item
+ *   4 : Chaine de charactï¿½res contenant la description du l'item
+ *   5 : Entier contenant la quantitï¿½ disponible de l'item
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -22,7 +22,7 @@
  * Note(s) :
  *
  * Historique :
- *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-01 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescription, int iQuantite){
@@ -31,7 +31,7 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
   // Allocation de l'espace d'un item
   item_t *p = malloc(sizeof(*p));
   if (p) {
-    // Assignation des élems de l'item
+    // Assignation des ï¿½lems de l'item
 
     // ID
     p->iID = *piNbItems +1;
@@ -42,23 +42,23 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
     // Description
     p->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sDescription) + 1)), sDescription);
 
-    // Quantité
+    // Quantitï¿½
     p->iQuantite = iQuantite;
 
-    // Allocation de la mémoire nécécaire à la liste temporairement
+    // Allocation de la mï¿½moire nï¿½cï¿½caire ï¿½ la liste temporairement
     item_t **tempList = realloc(*listeItems, (*piNbItems + 1) * sizeof(*tempList));
     if (tempList){
-      // Mettre les pointeurs dans leurs cases mémoires
+      // Mettre les pointeurs dans leurs cases mï¿½moires
       *listeItems = tempList;
       (*listeItems)[*piNbItems] = p;
-      // Incrémentation du nombre d'item dans la liste
+      // Incrï¿½mentation du nombre d'item dans la liste
       *piNbItems += 1;
     } else {
-      // Si le realloc n'a pas pu alloquer la mémoire
+      // Si le realloc n'a pas pu alloquer la mï¿½moire
       iCodeErreur = -1;
     }
   } else {
-    // Si le malloc de l'item dans p n'a pas réussi
+    // Si le malloc de l'item dans p n'a pas rï¿½ussi
     iCodeErreur = -1;
   }
 
@@ -70,13 +70,13 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
  *    AjouterQuantiteItem
  *
  * Description de la fonction :
- *    Ajoute une certaine quantité à un item dans la liste d'items
+ *    Ajoute une certaine quantitï¿½ ï¿½ un item dans la liste d'items
  *
- * Paramètre(s) d'entrée :
- *   1 : Pointeur vers la liste à écrire
- *   2 : Entier précisant le nombre de données contenue dans la liste
- *   3 : Entier contenant le No identificateur de l'item à modifier
- *   4 : Entier contenant la quantité à ajouter
+ * Paramï¿½tre(s) d'entrï¿½e :
+ *   1 : Pointeur vers la liste ï¿½ ï¿½crire
+ *   2 : Entier prï¿½cisant le nombre de donnï¿½es contenue dans la liste
+ *   3 : Entier contenant le No identificateur de l'item ï¿½ modifier
+ *   4 : Entier contenant la quantitï¿½ ï¿½ ajouter
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -85,7 +85,7 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
  * Note(s) :
  *
  * Historique :
- *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-01 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iAjout){
@@ -93,12 +93,12 @@ int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
-    // Si la quantité est positive
+    // Si la quantitï¿½ est positive
     if (iAjout >= 0) {
-      // Ajouter l'ajout à la quantité
+      // Ajouter l'ajout ï¿½ la quantitï¿½
       (*listeItems)[iItemID]->iQuantite += iAjout;
     } else {
-      // Si l'ajout est négatif le rendre positif et appeler la fonction pour retirer la quantité ;)
+      // Si l'ajout est nï¿½gatif le rendre positif et appeler la fonction pour retirer la quantitï¿½ ;)
       iAjout = -iAjout;
       iCodeErreur = RetirerQuantiteItem(listeItems, piNbItems, iItemID, iAjout);
     }
@@ -115,13 +115,13 @@ int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  *    RetirerQuantiteItem
  *
  * Description de la fonction :
- *    Retire une certaine quantité à un item dans la liste d'items
+ *    Retire une certaine quantitï¿½ ï¿½ un item dans la liste d'items
  *
- * Paramètre(s) d'entrée :
- *   1 : Pointeur vers la liste à écrire
- *   2 : Entier précisant le nombre de données contenue dans la liste
- *   3 : Entier contenant le No identificateur de l'item à modifier
- *   4 : Entier contenant la quantité à retirer
+ * Paramï¿½tre(s) d'entrï¿½e :
+ *   1 : Pointeur vers la liste ï¿½ ï¿½crire
+ *   2 : Entier prï¿½cisant le nombre de donnï¿½es contenue dans la liste
+ *   3 : Entier contenant le No identificateur de l'item ï¿½ modifier
+ *   4 : Entier contenant la quantitï¿½ ï¿½ retirer
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -130,7 +130,7 @@ int AjouterQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  * Note(s) :
  *
  * Historique :
- *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-11-17 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, int iRetrait){
@@ -138,12 +138,12 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
-    // Si la quantité est positive
+    // Si la quantitï¿½ est positive
     if (iRetrait >= 0) {
-      // Retirer le retrait à la quantité
+      // Retirer le retrait ï¿½ la quantitï¿½
       (*listeItems)[iItemID]->iQuantite -= iRetrait;
     } else {
-      // Si le retrait est négatif le rendre positif et appeler la fonction pour ajouter la quantité ;)
+      // Si le retrait est nï¿½gatif le rendre positif et appeler la fonction pour ajouter la quantitï¿½ ;)
       iRetrait = -iRetrait;
       iCodeErreur = AjouterQuantiteItem(listeItems, piNbItems, iItemID, iRetrait);
     }
@@ -162,11 +162,11 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  * Description de la fonction :
  *    Change le nom de l'item dans la liste d'items
  *
- * Paramètre(s) d'entrée :
- *   1 : Pointeur vers la liste à écrire
- *   2 : Entier précisant le nombre de données contenue dans la liste
- *   3 : Entier contenant le No identificateur de l'item à modifier
- *   4 : Chaine de charactères contenant le nouveau nom de l'item
+ * Paramï¿½tre(s) d'entrï¿½e :
+ *   1 : Pointeur vers la liste ï¿½ ï¿½crire
+ *   2 : Entier prï¿½cisant le nombre de donnï¿½es contenue dans la liste
+ *   3 : Entier contenant le No identificateur de l'item ï¿½ modifier
+ *   4 : Chaine de charactï¿½res contenant le nouveau nom de l'item
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -175,7 +175,7 @@ int RetirerQuantiteItem(item_t*** listeItems, short piNbItems, short iItemID, in
  * Note(s) :
  *
  * Historique :
- *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-11-17 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouveauNom){
@@ -183,9 +183,9 @@ int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* 
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
-    // Liberer la mémoire occupé par l'ancien nom
+    // Liberer la mï¿½moire occupï¿½ par l'ancien nom
     free((*listeItems)[iItemID]->sNom);
-    // Alloquer l'espace mémoire du nouveau nom et mettre son addresse dans l'item
+    // Alloquer l'espace mï¿½moire du nouveau nom et mettre son addresse dans l'item
     (*listeItems)[iItemID]->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNouveauNom) + 1)), sNouveauNom);
   } else {
     // Si le ID est invalide, retourner un code d'erreur
@@ -202,11 +202,11 @@ int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* 
  * Description de la fonction :
  *    Change la description de l'item dans la liste d'items
  *
- * Paramètre(s) d'entrée :
- *   1 : Pointeur vers la liste à écrire
- *   2 : Entier précisant le nombre de données contenue dans la liste
- *   3 : Entier contenant le No identificateur de l'item à modifier
- *   4 : Chaine de charactères contenant la nouvelle description de l'item
+ * Paramï¿½tre(s) d'entrï¿½e :
+ *   1 : Pointeur vers la liste ï¿½ ï¿½crire
+ *   2 : Entier prï¿½cisant le nombre de donnï¿½es contenue dans la liste
+ *   3 : Entier contenant le No identificateur de l'item ï¿½ modifier
+ *   4 : Chaine de charactï¿½res contenant la nouvelle description de l'item
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -215,7 +215,7 @@ int ModifierNomItem(item_t*** listeItems, short piNbItems, short iItemID, char* 
  * Note(s) :
  *
  * Historique :
- *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-11-17 Olivier David Laplante Version 1 Dï¿½finie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
 int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
@@ -223,9 +223,9 @@ int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID
 
   // Si le ID est valide
   if (iItemID > 0 && iItemID < piNbItems){
-    // Liberer la mémoire occupé par l'ancienne description
+    // Liberer la mï¿½moire occupï¿½ par l'ancienne description
     free((*listeItems)[iItemID]->sDescription);
-    // Alloquer l'espace mémoire de la nouvelle description et mettre son addresse dans l'item
+    // Alloquer l'espace mï¿½moire de la nouvelle description et mettre son addresse dans l'item
     (*listeItems)[iItemID]->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sNouvelleDescription) + 1)),
                                           sNouvelleDescription);
   } else {

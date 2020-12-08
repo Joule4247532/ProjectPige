@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="BdD.csv" />
 		<Unit filename="Interface_Liste.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -40,6 +41,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Menu.h" />
+		<Unit filename="Recherche_ID.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Recherche_ID.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -1,6 +1,7 @@
 #include "Main.h"
 #include "Interface_Liste.h"
 #include "Menu.h"
+#include "Recherche_ID.h"
 
 int main() {
     int iCodeErreur = 0;
@@ -8,16 +9,17 @@ int main() {
     short iNbItems = 0;
     int iContinueProgramme = 1;
 
-     do {
+    do {
 
 /******************************************************Menu principal*********************************************************/
 
         switch (menu()) {
             case 1:
-                printf("Vous avez choisi de charger la base de donn�es.\n\n");
+                printf("Vous avez choisi de charger la base de donnees.\n\n");
 
                 while (iContinueProgramme == 1) {
                     // Appel de la fonction de chargement de donn�es.
+                    RechercherID(&items);
 
                     // On demande si l'utilisateur veut sortir du proramme.
                     printf("Entrez 1 pour continuer, sinon entrez 0.\n");
@@ -35,7 +37,7 @@ int main() {
                     scanf("%d", &iContinueProgramme);
                 }
             case 3:
-                printf("Vous avez choisi d'afficher les donn�es charg�es.\n\n");
+                printf("Vous avez choisi d'afficher les donnees chargees.\n\n");
 
                 while (iContinueProgramme == 1) {
                     // Appel de la fonction de chargement de donn�es.
