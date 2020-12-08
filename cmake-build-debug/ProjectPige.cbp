@@ -89,6 +89,12 @@
 		<Unit filename="D:/ClionProjects/ProjectPige/Menu.h">
 			<Option target="ProjectPige"/>
 		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Recherche_ID.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Recherche_ID.h">
+			<Option target="ProjectPige"/>
+		</Unit>
 		<Unit filename="D:/ClionProjects/ProjectPige/Sauvegarde.c">
 			<Option target="ProjectPige"/>
 		</Unit>

@@ -13,7 +13,7 @@ int main() {
 
 /******************************************************Menu principal*********************************************************/
 
-        switch (menu()) {
+        switch (AfficherMenu()) {
             case 1:
                 printf("Vous avez choisi de charger la base de donnees.\n\n");
 
@@ -89,4 +89,118 @@ int main() {
     } while (iContinueProgramme == 1);
 
     return iCodeErreur;
+}
+
+/*
+ * Nom de la fonction :
+ *    ModifierDescriptionItem
+ *
+ * Description de la fonction :
+ *    Change la description de l'item dans la liste d'items
+ *
+ * Paramètre(s) d'entrée :
+ *   1 : Pointeur vers la liste à écrire
+ *   2 : Entier précisant le nombre de données contenue dans la liste
+ *   3 : Entier contenant le No identificateur de l'item à modifier
+ *   4 : Chaine de charactères contenant la nouvelle description de l'item
+ *
+ * Valeur de retour :
+ *   0  : Aucune erreur
+ *   -1 : Une erreur est survenue
+ *
+ * Note(s) :
+ *
+ * Historique :
+ *    2020-11-17 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
+ */
+int ModifierDescriptionItem(item_t*** listeItems, short piNbItems, short iItemID, char* sNouvelleDescription){
+  int iCodeErreur = 0;
+
+  // Si le ID est valide
+  if (iItemID > 0 && iItemID < piNbItems){
+    // Liberer la mémoire occupé par l'ancienne description
+    free((*listeItems)[iItemID]->sDescription);
+    // Alloquer l'espace mémoire de la nouvelle description et mettre son addresse dans l'item
+    (*listeItems)[iItemID]->sDescription = strcpy((char *) malloc(sizeof(char) * (strlen(sNouvelleDescription) + 1)),
+                                          sNouvelleDescription);
+  } else {
+    // Si le ID est invalide, retourner un code d'erreur
+    iCodeErreur = -1;
+  }
+
+  return iCodeErreur;
+}
+
+/*
+ * Nom de la fonction :
+ *    ChargerDonnees
+ *
+ * Description de la fonction :
+ *    Charge les données de BdD.csv dans la structure.
+ *
+ * Paramètre(s) d'entrée :
+ *   Un pointeur vers la structure item_t
+ *
+ * Valeur de retour :
+ *   0  : Aucune erreur
+ *   -1 : Une erreur est survenue
+ *
+ * Note(s) :
+ *
+ * Historique :
+ *    2020-12-07    Paul Richard    Création du code
+ */
+int ChargerDonnees(item_t*** items, short* iNbItems, char* sNomFichier){
+    int iErr = -1;
+    FILE* pBaseDeDonnees = NULL;
+    char* sGetString = "\0";
+    char* psGetString;
+    short iID;
+    int iQuantite;
+    char* sNom;
+    char* sDescription;
+    int iIndex = 0;
+    char cItem = '\0';
+
+
+
+
+    pBaseDeDonnees = fopen(sNomFichier, "r");
+    if (pBaseDeDonnees) {
+        do {
+            sGetString = malloc(sizeof(char));
+            iErr = sGetString != NULL ? 0 : -1;
+            cItem = '\0';
+
+            for (int i = 0; cItem != '\r' && iErr != -1 && cItem != EOF; i++) {
+                cItem = (char) fgetc(pBaseDeDonnees);
+                sGetString = (char*) realloc(sGetString, (i+1)*sizeof(char));
+                iErr = sGetString == NULL ? -1 : 0;
+                if (iErr == 0 && cItem != EOF)
+                    sGetString[i] = cItem;
+            }
+
+            if (iErr == 0) {
+                if (iIndex != 0) {
+                    psGetString = strtok(sGetString, NETTOYAGE);
+                    psGetString = strtok(NULL, NETTOYAGE);
+                    sNom = psGetString;
+                    psGetString = strtok(NULL, NETTOYAGE);
+                    sDescription = psGetString;
+                    psGetString = strtok(NULL, NETTOYAGE);
+                    iQuantite = strtol(psGetString, NULL, 10);
+
+                    iErr = AjouterItem(items, iNbItems, sNom, sDescription, iQuantite);
+                }
+            }
+
+            free(sGetString);
+            iIndex = iIndex + 1;
+        } while (cItem != EOF);
+    }
+    fclose(pBaseDeDonnees);
+
+
+    return iErr;
 }

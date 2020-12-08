@@ -14,7 +14,7 @@ int sauvegarderDonnees(item_t*** listeItems, short iNbItems, char* sNomFichier){
 
     // Lire les items et mettre les élems dans la database
     for (int i = 0; i < iNbItems; i++) {
-      fprintf(fiFichier, "%i;%s;%s;%i\n",
+      fprintf(fiFichier, "%i;%s;%s;%i\r",
               (*listeItems)[i]->iID,
               (*listeItems)[i]->sNom,
               (*listeItems)[i]->sDescription,

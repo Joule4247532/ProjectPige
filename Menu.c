@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "Main.h"
 
 /*
@@ -34,10 +31,10 @@ int AfficherMenu() {
         printf("=====Menu principal=====\n\n");
         printf("Charger la base de donnees: Appuyer sur 1.\n\n");
         printf("Effectuer un retrait: Appuyex sur 2.\n\n");
-        printf("Afficher les donnees charg�es: Appuyer sur 3\n\n");
-        printf("Cr�er un nouvel item: Appuyex sur 4\n\n");
+        printf("Afficher les donnees chargees: Appuyer sur 3\n\n");
+        printf("Creer un nouvel item: Appuyex sur 4\n\n");
         printf("Ajouter une quantite d'un item: Appuyex sur 5.\n\n");
-        printf("Modifier les d�tails d'un item: Appuyex sur 6.\n\n");
+        printf("Modifier les details d'un item: Appuyex sur 6.\n\n");
         printf("Votre choix?\n");
         scanf("%d", &choix);
     }

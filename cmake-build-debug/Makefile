@@ -196,6 +196,33 @@ Menu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Menu.c.s
 .PHONY : Menu.c.s
 
+Recherche_ID.obj: Recherche_ID.c.obj
+
+.PHONY : Recherche_ID.obj
+
+# target to build an object file
+Recherche_ID.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Recherche_ID.c.obj
+.PHONY : Recherche_ID.c.obj
+
+Recherche_ID.i: Recherche_ID.c.i
+
+.PHONY : Recherche_ID.i
+
+# target to preprocess a source file
+Recherche_ID.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Recherche_ID.c.i
+.PHONY : Recherche_ID.c.i
+
+Recherche_ID.s: Recherche_ID.c.s
+
+.PHONY : Recherche_ID.s
+
+# target to generate assembly for a file
+Recherche_ID.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Recherche_ID.c.s
+.PHONY : Recherche_ID.c.s
+
 Sauvegarde.obj: Sauvegarde.c.obj
 
 .PHONY : Sauvegarde.obj
@@ -265,6 +292,9 @@ help:
 	@echo ... Menu.obj
 	@echo ... Menu.i
 	@echo ... Menu.s
+	@echo ... Recherche_ID.obj
+	@echo ... Recherche_ID.i
+	@echo ... Recherche_ID.s
 	@echo ... Sauvegarde.obj
 	@echo ... Sauvegarde.i
 	@echo ... Sauvegarde.s
