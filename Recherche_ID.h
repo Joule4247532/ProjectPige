@@ -1,3 +1,3 @@
 
-int RechercherID(item_t*** listeItems, short iNbItems);
+int RechercherID(item_t*** listeItems);
 
