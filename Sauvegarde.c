@@ -1,22 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/************************************** Fichiers d'inclusion ****************************************/
 #include "Main.h"
 #include "Sauvegarde.h"
 
 /*
  * Nom de la fonction :
- *    AjouterItem
+ *    SauvegarderDonnees
  *
- * Description de la fonction :
- *    Ajoute un Item � listeItems avec allocation de memoire dynamique
+ * Description de la fonction : Sauvegarde les items dans le fichier.
  *
- * Param�tre(s) d'entr�e :
- *   1 : Pointeur vers listeItems
- *   2 : Pointeur d'entier pr�cisant le nombre d'items contenue dans la liste
- *   3 : Chaine de charact�res contenant le nom de l'item
- *   4 : Chaine de charact�res contenant la description du l'item
- *   5 : Entier contenant la quantit� disponible de l'item
+ * Paramètre(s) d'entrée :
+ *   1 : Pointeur vers listeItems.
+ *   2 : Entier précisant le nombre d'items contenue dans la liste.
+ *   3 : Pointeur vers le nom du fichier.
  *
  * Valeur de retour :
  *   0  : Aucune erreur
@@ -25,24 +20,23 @@
  * Note(s) :
  *
  * Historique :
- *    2020-12-01 Olivier David Laplante Version 1 D�finie
- *    2020-12-06 Olivier David Laplante Version 1 Finie
+ *    2020-12-07 Olivier David Laplante Version 1 Définie
  */
 
-int sauvegarderDonnees(item_t*** listeItems, short iNbItems, char* sNomFichier){
+int SauvegarderDonnees(item_t*** listeItems, int iNbItems, char* sNomFichier){
   int iCodeErreur = 0;
 
   // Ouvcerture du fichier pour écrire en overwrite
   FILE *fiFichier = fopen(sNomFichier, "w");
 
   // Continuer seulement si le fichier existe
-  if (fiFichier) {
+  if (fiFichier != NULL) {
     // Mettre l'en-tête de la database
     fprintf(fiFichier, "ID;Nom;Description;Quantite");
 
-    // Lire les items et mettre les élems dans la database
+    // Lire les items et mettre les élements dans la database
     for (int i = 0; i < iNbItems; i++) {
-      fprintf(fiFichier, "%i;%s;%s;%i\n",
+      fprintf(fiFichier, "%i;%s;%s;%i\r",
               (*listeItems)[i]->iID,
               (*listeItems)[i]->sNom,
               (*listeItems)[i]->sDescription,
