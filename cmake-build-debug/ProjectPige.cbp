@@ -74,7 +74,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/ClionProjects/ProjectPige/Interface_Liste.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Interface_Liste.h">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Main.h">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Menu.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Menu.h">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Sauvegarde.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/Sauvegarde.h">
+			<Option target="ProjectPige"/>
+		</Unit>
 		<Unit filename="D:/ClionProjects/ProjectPige/main.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/main.h">
 			<Option target="ProjectPige"/>
 		</Unit>
 		<Unit filename="D:/ClionProjects/ProjectPige/CMakeLists.txt">

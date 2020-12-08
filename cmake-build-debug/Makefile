@@ -142,6 +142,87 @@ ProjectPige/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/build
 .PHONY : ProjectPige/fast
 
+Interface_Liste.obj: Interface_Liste.c.obj
+
+.PHONY : Interface_Liste.obj
+
+# target to build an object file
+Interface_Liste.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj
+.PHONY : Interface_Liste.c.obj
+
+Interface_Liste.i: Interface_Liste.c.i
+
+.PHONY : Interface_Liste.i
+
+# target to preprocess a source file
+Interface_Liste.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Interface_Liste.c.i
+.PHONY : Interface_Liste.c.i
+
+Interface_Liste.s: Interface_Liste.c.s
+
+.PHONY : Interface_Liste.s
+
+# target to generate assembly for a file
+Interface_Liste.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Interface_Liste.c.s
+.PHONY : Interface_Liste.c.s
+
+Menu.obj: Menu.c.obj
+
+.PHONY : Menu.obj
+
+# target to build an object file
+Menu.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Menu.c.obj
+.PHONY : Menu.c.obj
+
+Menu.i: Menu.c.i
+
+.PHONY : Menu.i
+
+# target to preprocess a source file
+Menu.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Menu.c.i
+.PHONY : Menu.c.i
+
+Menu.s: Menu.c.s
+
+.PHONY : Menu.s
+
+# target to generate assembly for a file
+Menu.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Menu.c.s
+.PHONY : Menu.c.s
+
+Sauvegarde.obj: Sauvegarde.c.obj
+
+.PHONY : Sauvegarde.obj
+
+# target to build an object file
+Sauvegarde.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Sauvegarde.c.obj
+.PHONY : Sauvegarde.c.obj
+
+Sauvegarde.i: Sauvegarde.c.i
+
+.PHONY : Sauvegarde.i
+
+# target to preprocess a source file
+Sauvegarde.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Sauvegarde.c.i
+.PHONY : Sauvegarde.c.i
+
+Sauvegarde.s: Sauvegarde.c.s
+
+.PHONY : Sauvegarde.s
+
+# target to generate assembly for a file
+Sauvegarde.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/Sauvegarde.c.s
+.PHONY : Sauvegarde.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -178,6 +259,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ProjectPige
+	@echo ... Interface_Liste.obj
+	@echo ... Interface_Liste.i
+	@echo ... Interface_Liste.s
+	@echo ... Menu.obj
+	@echo ... Menu.i
+	@echo ... Menu.s
+	@echo ... Sauvegarde.obj
+	@echo ... Sauvegarde.i
+	@echo ... Sauvegarde.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
