@@ -142,6 +142,33 @@ ProjectPige/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/build
 .PHONY : ProjectPige/fast
 
+ChargerDonnees.obj: ChargerDonnees.c.obj
+
+.PHONY : ChargerDonnees.obj
+
+# target to build an object file
+ChargerDonnees.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/ChargerDonnees.c.obj
+.PHONY : ChargerDonnees.c.obj
+
+ChargerDonnees.i: ChargerDonnees.c.i
+
+.PHONY : ChargerDonnees.i
+
+# target to preprocess a source file
+ChargerDonnees.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/ChargerDonnees.c.i
+.PHONY : ChargerDonnees.c.i
+
+ChargerDonnees.s: ChargerDonnees.c.s
+
+.PHONY : ChargerDonnees.s
+
+# target to generate assembly for a file
+ChargerDonnees.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ProjectPige.dir\build.make CMakeFiles/ProjectPige.dir/ChargerDonnees.c.s
+.PHONY : ChargerDonnees.c.s
+
 Interface_Liste.obj: Interface_Liste.c.obj
 
 .PHONY : Interface_Liste.obj
@@ -286,6 +313,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ProjectPige
+	@echo ... ChargerDonnees.obj
+	@echo ... ChargerDonnees.i
+	@echo ... ChargerDonnees.s
 	@echo ... Interface_Liste.obj
 	@echo ... Interface_Liste.i
 	@echo ... Interface_Liste.s

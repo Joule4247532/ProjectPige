@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/ClionProjects/ProjectPige/ChargerDonnees.c">
+			<Option target="ProjectPige"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/ProjectPige/ChargerDonnees.h">
+			<Option target="ProjectPige"/>
+		</Unit>
 		<Unit filename="D:/ClionProjects/ProjectPige/Interface_Liste.c">
 			<Option target="ProjectPige"/>
 		</Unit>

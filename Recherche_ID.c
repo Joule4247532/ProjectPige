@@ -20,15 +20,10 @@
  */
 
 int RechercherID(item_t*** listeItems) {
+    int iCodeErreur = 0;
     int iID = 0;
     printf("Entrez le numero d'identification de la piece recherchee:\n");
     scanf("%d", &iID);
-    for (int iNbItems = 0; iNbItems < 10; iNbItems++) {
-        if ((*listeItems)[iNbItems]->iID == iID) {
-        return iID;
-        }
-        else {
-            printf("Le num�ro d'identification entre est invalide\n");
-        }
-    }
+    return iID-1;
+
 }

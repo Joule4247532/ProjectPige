@@ -17,8 +17,9 @@
 #include "ChargerDonnees.h"
 
 int main() {
-    char *sNouveauNom = NULL;
-    char *sNouvelleDescription = NULL;
+    char sNouveauNom[100];
+    char sNouvelleDescription[2000];
+    char sNouvelleQuantite[16];
     int iCodeErreur = 0;
     item_t** items = NULL;
     int iNbItems = 0;
@@ -59,86 +60,88 @@ int main() {
             case 3:
                 printf("Vous avez choisi: Effectuer un retrait.\n\n");
 
-                while (iContinuerProgramme != 0) {
-                    // Appel de la fonction de recherche.
-                    iID = RechercherID(&items);
 
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
-                    // Appel de la fonction de retrait.
-                    RetirerQuantiteItem(&items, iNbItems, iID, iRetire);
-                    // Appel de la fonction d'affichage.
+                // Appel de la fonction de recherche.
+                iID = RechercherID(&items);
+                fflush(stdin);
+                printf("Entrez la quantite a retirer\n");
+                scanf("%d", &iRetire);
+                // Appel de la fonction de retrait.
+                RetirerQuantiteItem(&items, iNbItems, iID, iRetire);
 
-                    // Appel de la fonction de sauvegarde.
-                    SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
-                }
                 printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                 scanf("%d", &iContinuerProgramme);
                 break;
             case 4:
-                printf("Vous avez choisi: Ajouter une quantité d'un item.\n\n");
+                printf("Vous avez choisi: Ajouter une quantite d'un item.\n\n");
 
-                while (iContinuerProgramme != 0) {
-                    // Appel de la fonction de recherche.
-                    iID = RechercherID(&items);
-                    printf("Entrez la quantite a ajouter:\n");
-                    scanf("%d", &iNouvelleQuantite);
-                    // Appel de la fonction d'ajout.
-                    AjouterQuantiteItem(&items, iNbItems, iID, iNouvelleQuantite);
-                    // Appel de la fonction d'affichage.
+                // Appel de la fonction de recherche.
+                iID = RechercherID(&items);
+                fflush(stdin);
+                printf("Entrez la quantite a ajouter:\n");
+                scanf("%d", &iNouvelleQuantite);
+                // Appel de la fonction d'ajout.
+                AjouterQuantiteItem(&items, iNbItems, iID, iNouvelleQuantite);
+                // Appel de la fonction d'affichage.
 
-                    // Appel de la fonction de sauvegarde.
-                    SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
-                }
                 printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                 scanf("%d", &iContinuerProgramme);
                 break;
             case 5:
                 printf("Vous avez choisi: Creer un nouvel item.\n\n");
 
-                while (iContinuerProgramme != 0) {
-                    printf("Entrez le nom de l'item:\n");
-                    scanf("%s", sNouveauNom);
-                    printf("Entrez la description de l'item:\n");
-                    scanf("%s", sNouvelleDescription);
-                    printf("Entrez la quantité du nouvel item ajouté a l'inventaire:\n");
-                    scanf("%d", &iNouvelleQuantite);
+                fflush(stdin);
+                printf("Entrez le nom de l'item:\n");
+                fgets(sNouveauNom, sizeof(sNouveauNom), stdin);
+                fflush(stdin);
+                printf("Entrez la description de l'item:\n");
+                fgets(sNouvelleDescription, sizeof(sNouvelleDescription), stdin);
+                fflush(stdin);
+                printf("Entrez la quantite du nouvel item ajoute a l'inventaire:\n");
+                iNouvelleQuantite = strtol(fgets(sNouvelleQuantite, sizeof(sNouvelleQuantite), stdin), NULL, 10);
+                fflush(stdin);
 
-                    // Appel de la fonction de creation d'item.
-                    AjouterItem(&items, &iNbItems, sNouveauNom, sNouvelleDescription, &iNouvelleQuantite);
-                    // Appel de la fonction d'affichage.
+                sNouveauNom[strlen(sNouveauNom)-1] = '\0';
+                sNouvelleDescription[strlen(sNouvelleDescription)-1] = '\0';
 
-                    // Appel de la fonction de sauvegarde.
-                    SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-                }
+                // Appel de la fonction de creation d'item.
+                AjouterItem(&items, &iNbItems, sNouveauNom, sNouvelleDescription, iNouvelleQuantite);
+                memset(sNouveauNom, '\0', (strlen(sNouveauNom)+1)*sizeof(char));
+                memset(sNouvelleDescription, '\0', (strlen(sNouvelleDescription)+1)*sizeof(char));
+                memset(sNouvelleQuantite, '\0', (strlen(sNouvelleQuantite)+1)*sizeof(char));
+
                 printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                 scanf("%d", &iContinuerProgramme);
                 break;
             case 6:
                 printf("Vous avez choisi: Modifier les details d'un item.\n\n");
 
-                while (iContinuerProgramme != 0) {
-                    // Appel de la fonction de recherche.
-                    iID = RechercherID(&items);
-                    printf("Entrez le nouveau nom de l'item:\n");
-                    scanf("%s", sNouveauNom);
-                    // Appel de la fonction de modification du nom de l'item.
-                    ModifierNomItem(&items, iNbItems, iID, sNouveauNom);
-                    printf("Entrez la description de l'item:\n");
-                    scanf("%s", sNouvelleDescription);
-                    // Appel de la fonction de modification de description de l'item.
-                    ModifierDescriptionItem(&items, iNbItems, iID, sNouvelleDescription);
-                    // Appel de la fonction d'affichage.
+                // Appel de la fonction de recherche.
+                iID = RechercherID(&items);
+                fflush(stdin);
+                printf("Entrez le nouveau nom de l'item:\n");
+                fgets(sNouveauNom, sizeof(sNouveauNom), stdin);
+                fflush(stdin);
+                sNouveauNom[strlen(sNouveauNom)-1] = '\0';
+                // Appel de la fonction de modification du nom de l'item.
+                ModifierNomItem(&items, iNbItems, iID, sNouveauNom);
+                fflush(stdin);
+                printf("Entrez la description de l'item:\n");
+                fgets(sNouvelleDescription, sizeof(sNouvelleDescription), stdin);
+                fflush(stdin);
+                sNouvelleDescription[strlen(sNouvelleDescription)-1] = '\0';
+                // Appel de la fonction de modification de description de l'item.
+                ModifierDescriptionItem(&items, iNbItems, iID, sNouvelleDescription);
 
-                    // Appel de la fonction de sauvegarde.
-                    SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-                }
+                memset(sNouveauNom, '\0', (strlen(sNouveauNom)+1)*sizeof(char));
+                memset(sNouvelleDescription, '\0', (strlen(sNouvelleDescription)+1)*sizeof(char));
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
+                break;
+            case 7:
+                printf("Sauvegarde en cours...\n\n");
+                SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
+                printf("Fini\n");
                 printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                 scanf("%d", &iContinuerProgramme);
                 break;
@@ -149,6 +152,12 @@ int main() {
                 }
         }
     } while (iContinuerProgramme != 0);
+    for (int i = 0; i < iNbItems; i++){
+        free(items[i]->sNom);
+        free(items[i]->sDescription);
+        free(items[i]);
+    }
+    free(items);
 
     return iCodeErreur;
 }

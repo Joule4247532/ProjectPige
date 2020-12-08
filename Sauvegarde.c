@@ -32,7 +32,7 @@ int SauvegarderDonnees(item_t*** listeItems, int iNbItems, char* sNomFichier){
   // Continuer seulement si le fichier existe
   if (fiFichier != NULL) {
     // Mettre l'en-tête de la database
-    fprintf(fiFichier, "ID;Nom;Description;Quantite");
+    fprintf(fiFichier, "ID;Nom;Description;Quantite\r");
 
     // Lire les items et mettre les élements dans la database
     for (int i = 0; i < iNbItems; i++) {

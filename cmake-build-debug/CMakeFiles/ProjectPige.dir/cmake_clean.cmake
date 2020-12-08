@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ProjectPige.dir/ChargerDonnees.c.obj"
   "CMakeFiles/ProjectPige.dir/Interface_Liste.c.obj"
   "CMakeFiles/ProjectPige.dir/Menu.c.obj"
   "CMakeFiles/ProjectPige.dir/Recherche_ID.c.obj"

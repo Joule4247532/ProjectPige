@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/ClionProjects/ProjectPige/Main.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+D:/ClionProjects/ProjectPige/Sauvegarde.c
+Main.h
+D:/ClionProjects/ProjectPige/Main.h
+Sauvegarde.h
+D:/ClionProjects/ProjectPige/Sauvegarde.h
+
+D:/ClionProjects/ProjectPige/Sauvegarde.h
+

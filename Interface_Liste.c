@@ -26,7 +26,7 @@
  *    2020-12-01 Olivier David Laplante Version 1 Définie
  *    2020-12-06 Olivier David Laplante Version 1 Finie
  */
-int AjouterItem(item_t*** listeItems, int* piNbItems, char* sNom, char* sDescription, int* iQuantite){
+int AjouterItem(item_t*** listeItems, int* piNbItems, char* sNom, char* sDescription, int iQuantite){
   int iCodeErreur = 0;
 
   // Allocation de l'espace d'un item
@@ -93,7 +93,7 @@ int AjouterQuantiteItem(item_t*** listeItems, int piNbItems, int iItemID, int iA
   int iCodeErreur = 0;
 
   // Si le ID est valide
-  if (iItemID > 0 && iItemID < piNbItems){
+  if (iItemID >= 0 && iItemID < piNbItems){
     // Si la quantité est positive
     if (iAjout >= 0) {
       // Ajouter l'ajout à la quantité
@@ -138,7 +138,7 @@ int RetirerQuantiteItem(item_t*** listeItems, int piNbItems, int iItemID, int iR
   int iCodeErreur = 0;
 
   // Si le ID est valide
-  if (iItemID > 0 && iItemID < piNbItems){
+  if (iItemID >= 0 && iItemID < piNbItems){
     // Si la quantité est positive
     if (iRetrait >= 0) {
       // Retirer le retrait à la quantité
@@ -183,7 +183,7 @@ int ModifierNomItem(item_t*** listeItems, int piNbItems, int iItemID, char* sNou
   int iCodeErreur = 0;
 
   // Si le ID est valide
-  if (iItemID > 0 && iItemID < piNbItems){
+  if (iItemID >= 0 && iItemID < piNbItems){
     // Liberer la mémoire occupé par l'ancien nom
     free((*listeItems)[iItemID]->sNom);
     // Allouer l'espace mémoire du nouveau nom et mettre son addresse dans l'item
@@ -223,7 +223,7 @@ int ModifierDescriptionItem(item_t*** listeItems, int piNbItems, int iItemID, ch
   int iCodeErreur = 0;
 
   // Si le ID est valide
-  if (iItemID > 0 && iItemID < piNbItems){
+  if (iItemID >= 0 && iItemID < piNbItems){
     // Liberer la mémoire occupée par l'ancienne description
     free((*listeItems)[iItemID]->sDescription);
     // Allouer l'espace mémoire de la nouvelle description et mettre son addresse dans l'item

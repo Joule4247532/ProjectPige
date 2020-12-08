@@ -22,8 +22,8 @@
  * Historique :
  *    2020-12-07    Paul Richard    Création du code
  */
-int ChargerDonnees(item_t*** items, short* iNbItems, char* sNomFichier){
-    int iErr = -1;
+int ChargerDonnees(item_t*** items, int* iNbItems, char* sNomFichier){
+    int iErr = 0;
     char* psGetString = NULL;
     int iQuantite = 0;
     char* sNom = NULL;
@@ -49,17 +49,28 @@ int ChargerDonnees(item_t*** items, short* iNbItems, char* sNomFichier){
 
     if (buffer) {
         psGetString = strtok(buffer, "\t\n\r;");
+      psGetString = strtok(NULL, "\t\n\r;");
+      psGetString = strtok(NULL, "\t\n\r;");
+      psGetString = strtok(NULL, "\t\n\r;");
+      psGetString = strtok(NULL, "\t\n\r;");
 
         while(psGetString != NULL && iErr != -1) {
             psGetString = strtok(NULL, "\t\n\r;");
+          if (psGetString != NULL)
             sNom = psGetString;
+          if (psGetString != NULL)
             psGetString = strtok(NULL, "\t\n\r;");
+          if (psGetString != NULL)
             sDescription = psGetString;
+          if (psGetString != NULL)
             psGetString = strtok(NULL, "\t\n\r;");
+          if (psGetString != NULL)
             iQuantite = atoi(psGetString);
-
+          if (psGetString != NULL)
             iErr = AjouterItem(items, iNbItems, sNom, sDescription, iQuantite);
+          if (psGetString != NULL)
             printf("%s\n", (*items)[*iNbItems - 1]->sNom);
+          if (psGetString != NULL)
             psGetString = strtok(NULL, "\t\n\r;");
         }
     }
