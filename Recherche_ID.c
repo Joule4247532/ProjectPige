@@ -26,9 +26,7 @@
 int RechercherID(item_t*** listeItems, short iNbItems) {
     int iCodeErreur = 0;
     int index = 0;
-    for (int i = 0; i < iNbItems; i++){
-        int *tete = {0, 1, 3};
-        int *tete = {0, 1, 3};
+    for (int i = 0; i < iNbItems; i++) {
         (*listeItems)[index]->iID
         (*listeItems)[index]->iQuantite
         (*listeItems)[index]->sDescription
