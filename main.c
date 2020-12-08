@@ -13,7 +13,7 @@ int main() {
 
 /******************************************************Menu principal*********************************************************/
 
-        switch (menu()) {
+        switch (AfficherMenu()) {
             case 1:
                 printf("Vous avez choisi de charger la base de donnees.\n\n");
 

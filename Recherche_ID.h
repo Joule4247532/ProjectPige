@@ -1,6 +1,3 @@
-#ifndef RECHERCHE_ID_H_INCLUDED
-#define RECHERCHE_ID_H_INCLUDED
 
-int RechercherID();
+int RechercherID(item_t*** listeItems, short iNbItems);
 
-#endif // RECHERCHE_ID_H_INCLUDED
