@@ -1,5 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "Main.h"
-#include "Interface_Liste.h"
 
 /*
  * Nom de la fonction :
@@ -34,7 +36,7 @@ int AjouterItem(item_t*** listeItems, short* piNbItems, char* sNom, char* sDescr
     // Assignation des élems de l'item
 
     // ID
-    p->iID = *piNbItems +1;
+    p->iID = *piNbItems;
 
     // Nom
     p->sNom = strcpy((char *) malloc(sizeof(char) * (strlen(sNom) + 1)), sNom);

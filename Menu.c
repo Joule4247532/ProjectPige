@@ -1,15 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "Main.h"
 
-int menu() {
+/*
+ * Nom de la fonction :
+ *    AfficherMenu
+ *
+ * Description de la fonction :
+ *    Afficher le menu principal
+ *
+ * Paramètre(s) d'entrée :
+ *   1 : Pointeur vers listeItems
+ *   2 : Pointeur d'entier précisant le nombre d'items contenue dans la liste
+ *   3 : Chaine de charactères contenant le nom de l'item
+ *   4 : Chaine de charactères contenant la description du l'item
+ *   5 : Entier contenant la quantité disponible de l'item
+ *
+ * Valeur de retour :
+ *   0  : Aucune erreur
+ *   -1 : Une erreur est survenue
+ *
+ * Note(s) :
+ *
+ * Historique :
+ *    2020-12-01 Olivier David Laplante Version 1 Définie
+ *    2020-12-06 Olivier David Laplante Version 1 Finie
+ */
+
+int AfficherMenu() {
     int choix = 0;
     while (choix < 1 || choix > 6) {
         printf("=====Menu principal=====\n\n");
-        printf("Charger la base de données: Appuyer sur 1.\n\n");
+        printf("Charger la base de donnees: Appuyer sur 1.\n\n");
         printf("Effectuer un retrait: Appuyex sur 2.\n\n");
-        printf("Afficher les données chargées: Appuyer sur 3\n\n");
+        printf("Afficher les donnees chargées: Appuyer sur 3\n\n");
         printf("Créer un nouvel item: Appuyex sur 4\n\n");
-        printf("Ajouter une quantité d'un item: Appuyex sur 5.\n\n");
+        printf("Ajouter une quantite d'un item: Appuyex sur 5.\n\n");
         printf("Modifier les détails d'un item: Appuyex sur 6.\n\n");
         printf("Votre choix?\n");
         scanf("%d", &choix);
