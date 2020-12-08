@@ -1,7 +1,6 @@
 #ifndef CHARGERDONNEES_H_INCLUDED
 #define CHARGERDONNEES_H_INCLUDED
-#define NETTOYAGE "\t\n\r;"
 
-int ChargerDonnees(item_t*** items, int* iNbItems, char* sNomFichier);
+int ChargerDonnees(item_t*** items, short* iNbItems, char* sNomFichier);
 
 #endif // CHARGERDONNEES_H_INCLUDED

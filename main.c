@@ -21,7 +21,7 @@ int main() {
     char *sNouvelleDescription = NULL;
     int iCodeErreur = 0;
     item_t** items = NULL;
-    int iNbItems = 10;
+    int iNbItems = 0;
     int iID = 0;
     int iNouvelleQuantite = 0;
     int iRetire = 0;
@@ -33,39 +33,38 @@ int main() {
     HEURE_DATE()
 
     do {
-
         switch (AfficherMenu()) {
             case 1:
                 printf("Vous avez choisi: Charger la base de donnees.\n\n");
 
-                while (iContinuerProgramme == 1) {
-                    // Appel de la fonction de chargement de données.
-                    ChargerDonnees(&items, &iNbItems, FICHIER_BdD);
-
-                    // On demande si l'utilisateur veut quitter le proramme.
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
-                }
+                // Appel de la fonction de chargement de données.
+                ChargerDonnees(&items, &iNbItems, FICHIER_BdD);
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             case 2:
                 printf("Vous avez choisi: Afficher les donnees chargees.\n\n");
 
-                while (iContinuerProgramme == 1){
-                    // Appel de la fonction d'affichge;
-
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
+                // Appel de la fonction d'affichage.
+                for (int i = 0; i < iNbItems; i++) {
+                    printf("%i;%s;%s;%i\n",
+                        items[i]->iID,
+                        items[i]->sNom,
+                        items[i]->sDescription,
+                        items[i]->iQuantite);
                 }
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             case 3:
                 printf("Vous avez choisi: Effectuer un retrait.\n\n");
 
-                while (iContinuerProgramme == 1) {
+                while (iContinuerProgramme != 0) {
                     // Appel de la fonction de recherche.
                     iID = RechercherID(&items);
 
-                    printf("Entrez la quantité a retirer:\n");
-                    scanf("%d", &iRetire);
+                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                    scanf("%d", &iContinuerProgramme);
                     // Appel de la fonction de retrait.
                     RetirerQuantiteItem(&items, iNbItems, iID, iRetire);
                     // Appel de la fonction d'affichage.
@@ -76,11 +75,13 @@ int main() {
                     printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                     scanf("%d", &iContinuerProgramme);
                 }
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             case 4:
                 printf("Vous avez choisi: Ajouter une quantité d'un item.\n\n");
 
-                while (iContinuerProgramme == 1) {
+                while (iContinuerProgramme != 0) {
                     // Appel de la fonction de recherche.
                     iID = RechercherID(&items);
                     printf("Entrez la quantite a ajouter:\n");
@@ -95,11 +96,13 @@ int main() {
                     printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
                     scanf("%d", &iContinuerProgramme);
                 }
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             case 5:
                 printf("Vous avez choisi: Creer un nouvel item.\n\n");
 
-                while (iContinuerProgramme == 1) {
+                while (iContinuerProgramme != 0) {
                     printf("Entrez le nom de l'item:\n");
                     scanf("%s", sNouveauNom);
                     printf("Entrez la description de l'item:\n");
@@ -113,15 +116,14 @@ int main() {
 
                     // Appel de la fonction de sauvegarde.
                     SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
                 }
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             case 6:
                 printf("Vous avez choisi: Modifier les details d'un item.\n\n");
 
-                while (iContinuerProgramme == 1) {
+                while (iContinuerProgramme != 0) {
                     // Appel de la fonction de recherche.
                     iID = RechercherID(&items);
                     printf("Entrez le nouveau nom de l'item:\n");
@@ -136,18 +138,17 @@ int main() {
 
                     // Appel de la fonction de sauvegarde.
                     SauvegarderDonnees(&items, iNbItems, FICHIER_BdD);
-
-                    printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
-                    scanf("%d", &iContinuerProgramme);
                 }
+                printf("Entrez 1 pour continuer, entrez 0 pour quitter.\n");
+                scanf("%d", &iContinuerProgramme);
                 break;
             default:
-                while (iContinuerProgramme == 1) {
+                while (iContinuerProgramme != 0) {
                     printf("Il faut impérativement entrer un des 6 choix du menu.\n");
                     break;
                 }
         }
-    } while (iContinuerProgramme == 1);
+    } while (iContinuerProgramme != 0);
 
     return iCodeErreur;
 }

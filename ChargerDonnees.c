@@ -1,5 +1,6 @@
-/************************************** Fichiers d'inclusion ****************************************/
+/******************************************** Fichiers d'inclusion *********************************************/
 #include "Main.h"
+#include "Interface_Liste.h"
 #include "ChargerDonnees.h"
 
 /*
@@ -21,55 +22,46 @@
  * Historique :
  *    2020-12-07    Paul Richard    Création du code
  */
-int ChargerDonnees(item_t*** items, int* iNbItems, char* sNomFichier){
+int ChargerDonnees(item_t*** items, short* iNbItems, char* sNomFichier){
     int iErr = -1;
-    FILE* pBaseDeDonnees = NULL;
-    char* sGetString = "\0";
-    char* psGetString;
-    int iQuantite;
-    char* sNom;
-    char* sDescription;
-    int iIndex = 0;
-    char cItem = '\0';
+    char* psGetString = NULL;
+    int iQuantite = 0;
+    char* sNom = NULL;
+    char* sDescription = NULL;
+    char * buffer = 0;
+    long length;
+    FILE * f = fopen (sNomFichier, "rb");
 
-
-
-
-    pBaseDeDonnees = fopen(sNomFichier, "r");
-    if (pBaseDeDonnees != NULL) {
-        do {
-            sGetString = malloc(sizeof(char));
-            iErr = sGetString != NULL ? 0 : -1;
-            cItem = '\0';
-
-            for (int i = 0; cItem != '\r' && iErr != -1 && cItem != EOF; i++) {
-                cItem = (char) fgetc(pBaseDeDonnees);
-                sGetString = (char*) realloc(sGetString, (i+1)*sizeof(char));
-                iErr = sGetString == NULL ? -1 : 0;
-                if (iErr == 0 && cItem != EOF)
-                    sGetString[i] = cItem;
-            }
-
-            if (iErr == 0) {
-                if (iIndex != 0) {
-                    psGetString = strtok(sGetString, NETTOYAGE);
-                    psGetString = strtok(NULL, NETTOYAGE);
-                    sNom = psGetString;
-                    psGetString = strtok(NULL, NETTOYAGE);
-                    sDescription = psGetString;
-                    psGetString = strtok(NULL, NETTOYAGE);
-                    iQuantite = strtol(psGetString, NULL, 10);
-
-                    iErr = AjouterItem(&items, &iNbItems, sNom, sDescription, &iQuantite);
-                }
-            }
-
-            free(sGetString);
-            iIndex = iIndex + 1;
-        } while (cItem != EOF);
+    if (f != NULL) {
+        printf("Fichier ouvert\n");
+        fseek (f, 0, SEEK_END);
+        length = ftell (f);
+        fseek (f, 0, SEEK_SET);
+        buffer = malloc (length);
+        if (buffer) {
+            fread (buffer, 1, length, f);
+        }
+        fclose (f);
     }
-    fclose(pBaseDeDonnees);
+    else {
+        printf("Echec\n");
+    }
 
+    if (buffer) {
+        psGetString = strtok(buffer, "\t\n\r;");
 
+        while(psGetString != NULL && iErr != -1) {
+            psGetString = strtok(NULL, "\t\n\r;");
+            sNom = psGetString;
+            psGetString = strtok(NULL, "\t\n\r;");
+            sDescription = psGetString;
+            psGetString = strtok(NULL, "\t\n\r;");
+            iQuantite = atoi(psGetString);
+
+            iErr = AjouterItem(items, iNbItems, sNom, sDescription, iQuantite);
+            printf("%s\n", (*items)[*iNbItems - 1]->sNom);
+            psGetString = strtok(NULL, "\t\n\r;");
+        }
+    }
     return iErr;
 }
